@@ -796,9 +796,12 @@ public final class SasFileParser {
      * @return number of a long or double type.
      */
     private Object convertByteArrayToNumber(byte[] mass) {
-        double resultDouble = bytesToDouble(mass);
+        if (Arrays.equals(EMPTY_VALUE_DOUBLE, mass)) {
+            return null;
+        }
+        double resultDouble = Arrays.equals(MISSING_VALUE_DOUBLE, mass) ? MISSING_FLAG_DOUBLE : bytesToDouble(mass);
 
-        if (Double.isNaN(resultDouble) || (resultDouble < NAN_EPSILON && resultDouble > 0)) {
+        if (Double.isNaN(resultDouble)) {
             return null;
         }
 

@@ -938,9 +938,19 @@ interface SasFileConstants {
     double EPSILON = 1E-14;
 
     /**
-     * Accuracy to define whether the numeric result of {@link SasFileParser#convertByteArrayToNumber(byte[])} is NAN.
+     * Byte array value of values marked as missing.
      */
-    double NAN_EPSILON = 1E-300;
+    byte[] MISSING_VALUE_DOUBLE = new byte[] {0, 0, 0, 0, 0, -66, -1, -1};
+
+    /**
+     * Byte array value of empty values.
+     */
+    byte[] EMPTY_VALUE_DOUBLE = new byte[] {0, 0, 0, 0, 0, -47, -1, -1};
+
+    /**
+     * Flag double value for data marked as missing.
+     */
+    double MISSING_FLAG_DOUBLE = -999999d;
 
     /**
      * The number of milliseconds in a second.
